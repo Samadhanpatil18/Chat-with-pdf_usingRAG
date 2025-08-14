@@ -28,6 +28,7 @@ The backend uses **RAG (Retrieval-Augmented Generation)** to retrieve relevant d
 
 
 ## 📂 Project Structure
+```
 
 pdf-chat-app-UsingRAG/
 │
@@ -43,7 +44,7 @@ pdf-chat-app-UsingRAG/
 │
 └── README.md # This file
 
-
+```
 
 ## ⚙️ Tech Stack
 
@@ -125,6 +126,7 @@ Uses LangChain’s RetrievalQAChain with Gemini AI to generate an answer.
 Sends the answer back as JSON.
 
 # Architecture Diagram
+```
           ┌─────────────┐
           │   Frontend  │
           │ (React App) │
@@ -149,7 +151,7 @@ PDF Parsing   Text Embedding   Semantic Search
           ┌──────▼──────┐
           │   Frontend  │
           └─────────────┘
-
+```
 
 # 🏆 Why This Project Is Valuable
 
