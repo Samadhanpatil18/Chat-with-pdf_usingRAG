@@ -20,10 +20,12 @@ const embeddings = new GoogleGenerativeAIEmbeddings({ modelName: "embedding-001"
 
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+  // The value for the 'origin' key should be an array `[]`
+  origin: [
+    'http://localhost:5173',
     'https://chat-with-pdf-usingrag-frontend.onrender.com'
+  ]
 }));
-
 
 app.use(cors({
   origin: function (origin, callback) {
