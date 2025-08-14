@@ -1,176 +1,139 @@
-# PDF Chat App Using RAG (Retrieval-Augmented Generation)
+# 📄 PDF Chat App using RAG & Generative AI
 
-This is a **full-stack PDF Q&A application** built using **React**, **Node.js**, **Express**, and **LangChain**.  
-It allows users to upload PDFs, process their content, and then **ask questions in natural language**.  
-The backend uses **RAG (Retrieval-Augmented Generation)** to retrieve relevant document chunks and generate AI-based answers.
+A full-stack application that allows users to **upload PDFs** and **ask questions** about the content using **Retrieval-Augmented Generation (RAG)** and **Generative AI**.
 
 ---
 
 ## 🚀 Features
+- **PDF Upload & Parsing** – Extracts text content from uploaded PDFs.
+- **AI-Powered Q&A** – Answers questions based on PDF content using RAG.
+- **Real-Time Interaction** – Smooth UI updates and instant query responses.
+- **Authentication & Authorization** – User login, signup, and secure access.
+- **Responsive UI** – Built with Bootstrap for cross-device compatibility.
+- **Scalable Architecture** – Modular backend and frontend for easy maintenance.
 
-- **PDF Upload & Parsing**
-  - Users can upload one or multiple PDF files.
-  - Extracts text content from PDF files.
-- **Chunking & Vector Embedding**
-  - Splits large PDF text into smaller chunks.
-  - Generates embeddings using **OpenAI**.
-- **Vector Storage**
-  - Stores embeddings in a **Pinecone** vector database for fast retrieval.
-- **Natural Language Q&A**
-  - Users can ask any question related to uploaded PDFs.
-  - Uses **LangChain** with OpenAI to retrieve and generate context-based answers.
-- **Frontend with React**
-  - Simple and intuitive chat-like interface.
-  - Handles PDF uploads and displays AI answers.
-- **Backend with Node.js + Express**
-  - API endpoints for uploading PDFs and asking questions.
-  - RAG pipeline implemented using LangChain.
+---
 
+## 🛠 Tech Stack
+
+### **Frontend**
+- React.js (Hooks, Context API)
+- Bootstrap (Responsive design)
+- Axios (API communication)
+
+### **Backend**
+- Node.js
+- Express.js
+- Multer (File upload handling)
+- LangChain.js (RAG implementation)
+- OpenAI / Gemini API
+- PDF-parse (Text extraction)
+
+### **Database**
+- MongoDB (User & chat history storage)
+- Mongoose (Schema-based modeling)
+
+---
 
 ## 📂 Project Structure
-```
-
+```plaintext
 pdf-chat-app-UsingRAG/
 │
-├── backend/ # Node.js + Express backend
-│ ├── index.js # Main backend entry point
-│ ├── package.json # Backend dependencies & scripts
-│ ├── .env.example # Environment variables template
-│ ├── uploads/ # Uploaded PDF files
+├── backend/
+│   ├── config/           # Database & environment setup
+│   ├── controllers/      # API route controllers
+│   ├── routes/           # Express route definitions
+│   ├── utils/            # Helper functions & services
+│   ├── .env.example      # Environment variable template
+│   └── server.js         # Backend entry point
 │
-├── frontend/ # React frontend
-│ ├── src/ # React components & pages
-│ ├── package.json # Frontend dependencies
+├── frontend/
+│   ├── public/           # Static assets
+│   ├── src/
+│   │   ├── components/   # React components
+│   │   ├── pages/        # Main page views
+│   │   ├── services/     # API calls
+│   │   └── App.js        # Root component
 │
-└── README.md # This file
+├── README.md
+└── package.json
+⚙️ Installation & Setup
 
-```
+Clone the repository
 
-## ⚙️ Tech Stack
-
-### Frontend
-- React
-- Axios
-- Bootstrap / CSS
-
-### Backend
-- Node.js
-- Express
-- Multer (for file uploads)
-- LangChain
-- OpenAI API
-- Pinecone Vector Database
-- pdf-parse
-
-
-## 🔑 Environment Variables
-
-Create a `.env` file in the `backend/` folder with:
-
-```env
-PORT=5000
-OPENAI_API_KEY=your_openai_api_key
-PINECONE_API_KEY=your_pinecone_api_key
-PINECONE_ENVIRONMENT=your_pinecone_environment
-PINECONE_INDEX=your_pinecone_index_name
-```
-
-1 Clone the repository
 git clone https://github.com/your-username/pdf-chat-app-UsingRAG.git
 cd pdf-chat-app-UsingRAG
 
-2️ Install Backend Dependencies
+
+Backend Setup
+
 cd backend
 npm install
 
-3️ Install Frontend Dependencies
+
+Frontend Setup
+
 cd ../frontend
 npm install
 
-4️ Setup Environment Variables
-cd ../backend
-cp .env.example .env
-# Edit .env with your API keys
 
-5️ Start the Backend
+Configure Environment Variables
+
+Copy .env.example to .env in the backend folder.
+
+Add your MongoDB URI, OpenAI/Gemini API key, and other required credentials.
+
+Run the Application
+
+Start backend:
+
 cd backend
-node index.js
+npm run dev
 
-6️ Start the Frontend
-cd ../frontend
+
+Start frontend:
+
+cd frontend
 npm start
 
+🖥 Backend Workflow
+┌─────────────┐
+│   Frontend  │
+│ (React App) │
+└──────┬──────┘
+       │
+PDF Upload / Ask Question
+       │
+┌──────▼──────┐
+│   Backend   │
+│ (Express.js)│
+└──────┬──────┘
+       │
+Extract Text → Store in Vector DB
+       │
+Query with LangChain → AI Response
+       │
+┌──────▼──────┐
+│  Response   │
+│   to User   │
+└─────────────┘
 
+🔑 Environment Variables
 
-# Backend Workflow
-1. PDF Upload (/api/upload)
+Create a .env file in the backend directory with:
 
-Receives PDF via Multer (in memory).
+MONGO_URI=your_mongodb_connection
+OPENAI_API_KEY=your_openai_or_gemini_api_key
+PORT=5000
 
-Uses LangChain’s PDFLoader to extract text.
+👨‍💻 Author
 
-Warms up Pinecone index to ensure readiness.
+Samadhan Patil
+📧 Email: samadhanpati@example.com
+🔗 LinkedIn: samadhan-patil18
+💻 GitHub: Samadhanpatil18
 
-Converts text chunks into Google Generative AI embeddings.
+📜 License
 
-Stores embeddings in Pinecone for semantic search.
-
-# 2. Question Answering (/api/chat)
-
-Accepts user query in JSON body.
-
-Connects to existing Pinecone index and retrieves relevant chunks.
-
-Uses LangChain’s RetrievalQAChain with Gemini AI to generate an answer.
-
-Sends the answer back as JSON.
-
-# Architecture Diagram
-```
-          ┌─────────────┐
-          │   Frontend  │
-          │ (React App) │
-          └──────┬──────┘
-                 │
-         PDF Upload / Ask Question
-                 │
-          ┌──────▼──────┐
-          │   Backend   │
-          │ (Express.js)│
-          └──────┬──────┘
-   ┌──────────────┼─────────────────┐
-   │              │                 │
-PDF Parsing   Text Embedding   Semantic Search
- (PDFLoader) (Gemini API)     (Pinecone DB)
-   │              │                 │
-   └──────────────┴─────────────────┘
-                 │
-         Answer Generation
-           (Gemini AI)
-                 │
-          ┌──────▼──────┐
-          │   Frontend  │
-          └─────────────┘
-```
-
-# 🏆 Why This Project Is Valuable
-
-Demonstrates modern AI techniques (RAG, vector DBs, embeddings).
-
-Solves a real-world problem: quickly extracting insights from large PDFs.
-
-Integrates multiple APIs (LangChain, Pinecone, Gemini AI).
-
-Scalable and easily extendable to other file formats or multiple PDFs.
-
-# 👨‍💻 Author
-
-Samadhan Pati
-📧 Email: samadhanpatil0018@gmail.com
-🔗 LinkedIn: https://www.linkedin.com/in/samadhan-patil18
-
-
-
-# 📜 License
-# MIT License © 2025 Samadhan Patil
-
+## 📜 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
