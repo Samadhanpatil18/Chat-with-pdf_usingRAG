@@ -20,8 +20,8 @@ const embeddings = new GoogleGenerativeAIEmbeddings({ modelName: "embedding-001"
 
 
 app.use(cors({
-    origin: 'http://localhost:5173',
-    'https://chat-with-pdf-usingrag-frontend.onrender.com'
+    // origin: 'http://localhost:5173',
+   origin:'https://chat-with-pdf-usingrag-frontend.onrender.com'
 }));
 
 
