@@ -2,6 +2,9 @@ import { useState } from 'react';
 import axios from 'axios';
 import { showNotification } from '../utils/notifications';
 
+// ✅ Use VITE_ prefix so Vite exposes it to the frontend
+const BACKENDURL = import.meta.env.VITE_BACKEND_URL;
+
 export const usePDFHandler = () => {
     const [pdfUploaded, setPdfUploaded] = useState(false);
     const [uploading, setUploading] = useState(false);
@@ -22,9 +25,11 @@ export const usePDFHandler = () => {
         formData.append('pdf', file);
 
         try {
-            await axios.post('http://localhost:5000/api/upload', formData, {
+            // ✅ Fixed template literal and URL usage
+            await axios.post(`${BACKENDURL}/api/upload`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
+
             setPdfUploaded(true);
             setMessages([{
                 sender: 'bot',
@@ -55,7 +60,8 @@ export const usePDFHandler = () => {
         setIsLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:5000/api/chat', { question: input });
+            // ✅ Fixed template literal here too
+            const response = await axios.post(`${BACKENDURL}/api/chat`, { question: input });
             const botMessage = {
                 sender: 'bot',
                 text: response.data.answer,
@@ -93,4 +99,4 @@ export const usePDFHandler = () => {
         handleSendMessage,
         clearChat
     };
-}; 
+};

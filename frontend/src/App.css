@@ -98,7 +98,7 @@ body {
 
 .app-container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 2% auto;
     padding: 10px;
     min-height: 100vh;
     display: flex;
@@ -111,8 +111,8 @@ body {
 /* Header Styles with smooth animations - NO INITIAL TRANSFORMS */
 .header {
     text-align: center;
-    margin-bottom: 40px;
-    padding: 30px 20px;
+    margin-bottom: 22px;
+    padding: 10px 20px;
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(30px);
     border-radius: 30px;
@@ -195,31 +195,21 @@ body {
   }
 } */
 
-.header h1 {
-    font-size: 3.5rem;
-    font-weight: 900;
+/* .header h1 {
+    font-size: 1.5rem;
+    font-weight: 400;
     background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 50%, #e0e0e0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 12px;
+    margin-bottom: 2px;
     text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
     filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
     /* Ensure no initial transforms */
     transform: none;
-}
-
-/* Remove conflicting CSS keyframes - let Framer Motion handle animations */
-/* @keyframes titleReveal {
-  0% { 
-    opacity: 0; 
-    transform: translateY(30px) scale(0.9) rotate(-2deg); 
-  }
-  100% { 
-    opacity: 1; 
-    transform: translateY(0) scale(1) rotate(0deg); 
-  }
 } */
+
+
 
 .subtitle {
     font-size: 1.3rem;
@@ -230,17 +220,7 @@ body {
     transform: none;
 }
 
-/* Remove conflicting CSS keyframes - let Framer Motion handle animations */
-/* @keyframes subtitleReveal {
-  0% { 
-    opacity: 0; 
-    transform: translateY(20px) scale(0.95); 
-  }
-  100% { 
-    opacity: 1; 
-    transform: translateY(0) scale(1); 
-  }
-} */
+
 
 /* Main Content - NO INITIAL TRANSFORMS */
 .main-content {
@@ -327,16 +307,8 @@ body {
     /* animation: iconBounce 2s ease-in-out infinite; */
 }
 
-/* Remove conflicting CSS keyframes - let Framer Motion handle animations */
-/* @keyframes iconBounce {
-  0%, 100% { 
-    transform: translateY(0) rotate(0deg); 
-  }
-  50% { 
-    transform: translateY(-8px) rotate(2deg); 
-  }
-} */
 
+/* 
 .upload-area {
     border: 3px dashed #cbd5e0;
     border-radius: 20px;
@@ -387,7 +359,7 @@ body {
     font-weight: 600;
     font-size: 1.2rem;
     transition: color 0.3s ease;
-}
+} */
 
 .upload-area:hover span {
     color: #5a67d8;
@@ -406,32 +378,6 @@ body {
     /* animation: fadeInUp 0.5s ease-out; */
 }
 
-/* Remove conflicting CSS keyframes - let Framer Motion handle animations */
-/* @keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px) translateZ(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) translateZ(0);
-  }
-} */
-
-.spinner {
-    /* Remove conflicting CSS animation - let Framer Motion handle it */
-    /* animation: spin 1s linear infinite; */
-}
-
-/* Remove conflicting CSS keyframes - let Framer Motion handle animations */
-/* @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
 
 /* Chat Section */
 .chat-section {
@@ -492,18 +438,20 @@ body {
 
 .success-icon {
     color: #000403;
-    Remove conflicting CSS animation - let Framer Motion handle it */
-    animation: successPulse 2s ease-in-out infinite;
+    Remove conflicting CSS animation - let Framer Motion handle it */ animation: successPulse 2s ease-in-out infinite;
 }
 
 /* Remove conflicting CSS keyframes - let Framer Motion handle animations */
 @keyframes successPulse {
-  0%, 100% { 
-    transform: scale(1) rotate(0deg); 
-  }
-  50% { 
-    transform: scale(1.1) rotate(5deg); 
-  }
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: scale(1.1) rotate(5deg);
+    }
 }
 
 .new-chat-btn {

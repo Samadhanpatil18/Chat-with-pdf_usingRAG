@@ -30,7 +30,6 @@ const MessageForm = ({ input, setInput, onSubmit, isLoading }) => {
           transition={{ type: "spring", stiffness: 400 }}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.4, duration: 0.4 }}
         />
         <motion.button 
           type="submit" 
@@ -42,7 +41,6 @@ const MessageForm = ({ input, setInput, onSubmit, isLoading }) => {
           transition={{ type: "spring", stiffness: 400 }}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.4 }}
         >
           {isLoading ? (
             <motion.div
@@ -60,4 +58,4 @@ const MessageForm = ({ input, setInput, onSubmit, isLoading }) => {
   );
 };
 
-export default MessageForm; 
+export default MessageForm;
